@@ -9,7 +9,7 @@
 
 #define PWM_TOP            320
 #define PWM_SAMPLE         25000
-#define PWM_MAP            {10, 20, 50, 100}  // In percentage
+#define PWM_MAP            (10, 20, 50, 100)  // In percentage
 #define RPM_UPPER          6000
 #define RPM_LOWER          60
 
@@ -54,7 +54,7 @@ void analogWrite25k(uint8_t pin, uint16_t val) {
 void setupRpmPin() {
   pinMode(RPM_IN_PIN, INPUT_PULLUP);
   PCICR  |= _BV(PCIE2);
-  PCMSK2 |= _BV(PCINT20);
+  PCMSK2 |= _BV(PCINT4);  // Use PCINT4 instead of PCINT20
 }
 
 ISR (PCINT2_vect) {
@@ -83,7 +83,7 @@ void setup() {
   
   digitalWrite(HPE_TACH_PIN, LOW);
   
-  analogWrite25k(PWM2_OUT_PIN, PWM2_OUT_DUTY * PWM_TOP / 100);
+  analogWrite25k(PWM2_OUT_PIN, round(PWM2_OUT_DUTY * PWM_TOP / 100));
 }
 
 void loop() {
@@ -113,7 +113,7 @@ void loop() {
   float pwmIn = readPWM(PWM_IN_PIN, PWM_SAMPLE, true);
   float pwmOut = constrain(pwmIn * 100, PWM_MAP[0], PWM_MAP[3]);
   pwmOut = map(pwmOut, PWM_MAP[0], PWM_MAP[1], PWM_MAP[2], PWM_MAP[3]);  
-  analogWrite25k(PWM_OUT_PIN, pwmOut * PWM_TOP / 100);
+  analogWrite25k(PWM_OUT_PIN, round(pwmOut * PWM_TOP / 100));
     
   if (rpm >= TIMER2_RPM_LOWER) {
     OCR2A = TIMER2_FREQ / (rpm * 2 / 60);
@@ -124,9 +124,10 @@ void loop() {
     float halfPeriod = 500000 / count;
     
     for (uint16_t i = 0; i < count*2; i++) {
-      digitalWrite(NORMAL_TACH_PIN, (i % 2) ? LOW : HIGH);      
+      digitalWrite(NORMAL_TACH_PIN, (i % 2) ? HIGH : LOW);  // Fix inverted logic
       delayMicroseconds(halfPeriod);
     }
+    digitalWrite(NORMAL_TACH_PIN, LOW);  // Ensure signal ends low
   }
   
   while (micros() - curTime < 1000000); // Align to 1 second interval
