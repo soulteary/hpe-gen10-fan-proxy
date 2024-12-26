@@ -35,5 +35,6 @@ The HPE fan is rated at 6100 RPM, the Noctua NF-A8 PWM is 2200 RPM, Air Flow is 
 
 ## Credit
 
+- [zhaoyingpu/hpe-gen10-fan-proxy](https://github.com/zhaoyingpu/hpe-gen10-fan-proxy)
 - [Solving the DL180 G6 Fan Controller Problem](https://www.chamberofunderstanding.co.uk/2019/02/16/solving-the-dl180-g6-fan-controller-problem)
 - [Max-Sum/HP-fan-proxy](https://github.com/Max-Sum/HP-fan-proxy)
