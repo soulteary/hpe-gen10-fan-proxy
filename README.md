@@ -1,5 +1,7 @@
 # HPE Gen10 服务器风扇策略代理
 
+[English Document](./README.enUS.md)
+
 这个项目使用 Arduino 代理 PWM 信号来支持猫头鹰和其他低速静音风扇，服务器型号是 HPE Microserver Gen10 Plus，支持使用第二个风扇接口来冷却 iLO 芯片。
 
 ![](./assets/images/target-devices.jpg)
@@ -58,16 +60,24 @@
 
 RPM 转换器根据 HPE 的输入信号生成相应的 RPM 脉冲信号（每转 2 个脉冲），当 RPM 小于 900 时使用延迟，否则使用 PWM 输出。当然这个功能在HPE上是没有用的，它只需要一个下拉信号来确认风扇是否存在。
 
-HPE 风扇的额定转速为 6100 RPM，Noctua NF-A8 PWM 为 2200 RPM，气流为 1/3（55.5 与 146.88 m³/h），静压为 1/10（2.37 与 22.8 mm H2O）。所以我将占空比从 0.1~0.2 映射到 0.5~1.0。最小占空比为 0.5。
+![](./assets/images/combine-lines.jpg)
+
+HPE 风扇的额定转速为 6100 RPM，Noctua NF-A8 PWM 为 2200 RPM，气流为 1/3（55.5 与 146.88 m³/h），静压为 1/10（2.37 与 22.8 mm H2O）。所以我将占空比从 0.1-0.2 映射到 0.5-1.0。最小占空比为 0.5。
 
 详细代码实现：[fan-proxy](./fan-proxy.ino)
 
 ## 成品展示
 
-![IMG_4137.jpg](https://raw.githubusercontent.com/zhaoyingpu/hpe-gen10-fan-proxy/master/images/IMG_4137.jpg)
-![IMG_4142.jpg](https://raw.githubusercontent.com/zhaoyingpu/hpe-gen10-fan-proxy/master/images/IMG_4142.jpg)
-![IMG_4143.jpg](https://raw.githubusercontent.com/zhaoyingpu/hpe-gen10-fan-proxy/master/images/IMG_4143.jpg)
-![IMG_4151.jpg](https://raw.githubusercontent.com/zhaoyingpu/hpe-gen10-fan-proxy/master/images/IMG_4151.jpg)
+下面是 zhaoyingpu 原版的漂亮设计：
+
+![](./assets/images/zhaoyingpu-work.jpg)
+
+以及本项目的复现：
+
+![](./assets/images/setup-ilo-fan.jpg)
+
+![](./assets/images/connect-fans.jpg)
+
 
 ## 致谢
 
