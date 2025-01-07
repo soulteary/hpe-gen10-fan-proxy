@@ -1,6 +1,8 @@
-# HPE Gen10 Server Fan Policy Proxy
+# HPE ProLiant MicroServer Gen10 & Gen10 Plus Fan Policy Proxy
 
-This project uses Arduino to proxy PWM signals to support Noctua and other low-speed silent fans for the HPE Microserver Gen10 Plus server model. It also supports using a second fan interface to cool the iLO chip.
+[English Document](./README.enUS.md)
+
+This project uses Arduino to proxy PWM signals to support Noctua and other low-speed silent fans for the HPE ProLiant MicroServer Gen10 & Gen10 Plus server model. It also supports using a second fan interface to cool the iLO chip.
 
 ![](./assets/images/target-devices.jpg)
 

@@ -1,8 +1,8 @@
-# HPE Gen10 服务器风扇策略代理
+# HPE ProLiant MicroServer Gen10 & Gen10 Plus 服务器风扇策略代理
 
 [English Document](./README.enUS.md)
 
-这个项目使用 Arduino 代理 PWM 信号来支持猫头鹰和其他低速静音风扇，服务器型号是 HPE Microserver Gen10 Plus，支持使用第二个风扇接口来冷却 iLO 芯片。
+这个项目使用 Arduino 代理 PWM 信号来支持猫头鹰和其他低速静音风扇，服务器型号是 HPE ProLiant MicroServer Gen10 & Gen10 Plus，支持使用第二个风扇接口来冷却 iLO 芯片。
 
 ![](./assets/images/target-devices.jpg)
 
