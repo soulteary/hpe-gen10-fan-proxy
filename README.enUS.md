@@ -9,6 +9,7 @@ This project uses Arduino to proxy PWM signals to support Noctua and other low-s
 ## Complete Tutorial
 
 - [Home 10GbE Network Practice: Compact Home Server Noise Reduction Modification (Part 2)](https://zhuanlan.zhihu.com/p/16505126621)
+- [Home network upgrade practice: Quiet local 10G networking (Part 3)](https://zhuanlan.zhihu.com/p/16965372145)
 
 ## Hardware Related
 
